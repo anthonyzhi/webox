@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#ff6b35">
+  <meta name="description" content="WeBox — order your corporate lunch and dinner, manage dishes and daily menus.">
+  <title>WeBox · Corporate Meal Ordering</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#view">Skip to main content</a>
+
+  <div id="app" class="app">
+    <header id="app-header" class="app-header" aria-label="Application header"></header>
+
+    <div class="shell" id="shell">
+      <aside id="sidebar" class="console-sidebar" aria-label="Console navigation" hidden></aside>
+      <main id="view" class="view" tabindex="-1"></main>
+    </div>
+
+    <nav id="bottom-nav" class="bottom-nav" aria-label="Primary" hidden></nav>
+
+    <div id="cart-overlay" class="overlay" data-close="cart" hidden></div>
+    <aside id="cart-drawer" class="cart-drawer" aria-label="Your cart" aria-modal="false" hidden></aside>
+
+    <div id="ai-overlay" class="overlay" data-close="ai" hidden></div>
+    <aside id="ai-panel" class="ai-panel" aria-label="AI meal assistant" aria-modal="false" hidden></aside>
+
+    <div id="dialog-host" class="dialog-host" hidden></div>
+    <div id="toast-host" class="toast-host" role="status" aria-live="polite" aria-atomic="false"></div>
+  </div>
+
+  <noscript>
+    <p style="padding:24px;font-family:system-ui">WeBox requires JavaScript to be enabled.</p>
+  </noscript>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

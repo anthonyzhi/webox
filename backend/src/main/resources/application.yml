@@ -1,0 +1,63 @@
+server:
+  port: ${SERVER_PORT:8080}
+  compression:
+    enabled: true
+    mime-types: text/html,text/css,application/javascript,application/json,image/svg+xml
+    min-response-size: 1024
+  error:
+    include-message: always
+
+spring:
+  application:
+    name: webox
+  datasource:
+    url: jdbc:mysql://${DB_HOST:127.0.0.1}:${DB_PORT:3306}/${DB_NAME:webox}?useSSL=false&allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true&characterEncoding=utf8&serverTimezone=${WEB0X_TZ:Asia/Shanghai}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:}
+    hikari:
+      maximum-pool-size: ${DB_POOL_SIZE:20}
+      connection-timeout: 5000
+      pool-name: webox-pool
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: ${WEB0X_TZ:Asia/Shanghai}
+          batch_size: 50
+  sql:
+    init:
+      mode: always
+      continue-on-error: false
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 6MB
+  mvc:
+    async:
+      request-timeout: 120000
+  jackson:
+    default-property-inclusion: non_null
+
+webox:
+  timezone: ${WEB0X_TZ:Asia/Shanghai}
+  upload-dir: ${WEB0X_UPLOAD_DIR:./uploads}
+  session:
+    ttl-hours: 168
+  cache:
+    # Hot path: menu is read hundreds of times per minute during the 09:30-10:00 rush.
+    dish-ttl-seconds: 300
+    menu-ttl-seconds: 20
+  llm:
+    base-url: ${LLM_BASE_URL:https://api.openai.com/v1}
+    api-key: ${LLM_API_KEY:}
+    model: ${LLM_MODEL:gpt-4o-mini}
+    timeout-seconds: ${LLM_TIMEOUT_SECONDS:25}
+
+logging:
+  level:
+    root: INFO
+    com.webox: INFO
+    org.hibernate.SQL: WARN
