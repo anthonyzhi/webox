@@ -6,7 +6,7 @@ original session files, JSONL, one JSON object per message.
 
 | File | What it is |
 |------|-----------|
-| `qoder-cli-session-e02f265e.jsonl` | The full main session: the PRD analysis, environment probing, backend implementation, debugging, database setup, end-to-end verification in a real browser, and the documentation. |
+| `qoder-cli-session-e02f265e.jsonl` | The full main session: the PRD analysis, environment probing, backend implementation, debugging, database setup, end-to-end verification in a real browser, live LLM integration (DeepSeek, OpenAI-compatible streaming), the screenshot/delivery-document pass, and the GitHub publication. |
 | `qoder-cli-subagent-frontend.jsonl` | The sub-session in which the SPA was written by a delegated agent, running in parallel with the backend work. Qoder CLI records delegated agent sessions as separate transcripts, so both are included (the PRD requires *all* tools/agents used to be submitted). |
 
 Format notes:
@@ -15,6 +15,8 @@ Format notes:
   message payload, including every tool call and its output. This is the tool's native export format.
 * Timestamps are UTC. The session started at ~16:26 and the work it contains is the whole project, from the first
   requirement read to the final verification run.
+* **Redaction note**: the only edit made to these files is that a live LLM API key pasted during the session was
+  replaced with `sk-REDACTED-FOR-DELIVERY` (7 occurrences) before publishing. No other content was changed.
 
 Session facts (for reference while reading):
 
